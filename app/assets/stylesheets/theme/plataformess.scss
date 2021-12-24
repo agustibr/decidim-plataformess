@@ -1,0 +1,364 @@
+$brand: #2d4057;
+$beige: #f3deca;
+$beige-darker: #e6d1bf;
+$background: $beige;
+$text-color: $brand;
+$primary: #4097aa;
+$secondary: #fa9483;
+$link-color: $primary;
+$link-color-hover: $secondary;
+$footer-bg: $brand;
+$font-size: 16px;
+$font-size-medium: 20px;
+$white: white;
+$border-radius: 0;
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@mixin link-hover {
+  transition: all 0.3s;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    color: $link-color-hover;
+    text-decoration: none;
+  }
+}
+
+@mixin link {
+  color: $link-color;
+  text-decoration: none;
+  @include link-hover;
+}
+
+@mixin button-hover {
+  transition: all 0.3s;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    color: $white;
+    background: $link-color-hover;
+  }
+}
+
+@mixin button-hollow-hover($color) {
+  transition: all 0.3s;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    background: none;
+    color: $color;
+    border-color: $color;
+  }
+}
+
+@mixin button {
+  color: $white;
+  background: $text-color;
+
+  @include button-hover;
+}
+
+@mixin button-hollow($color, $color-hover) {
+  color: $color;
+  border: 1px solid $color;
+  background: none;
+
+  @include button-hollow-hover($color-hover);
+}
+
+.button {
+  @include button;
+}
+
+.button.hollow {
+  @include button-hollow($text-color, $link-color-hover);
+}
+
+body {
+  font-family: "Public Sans", Sans-serif;
+  font-size: $font-size;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+// Dark on light
+body,
+.off-canvas-wrapper,
+.title-bar,
+.navbar,
+.topbar__dropmenu .is-dropdown-submenu {
+  background-color: $background;
+  color: $text-color;
+}
+
+.logo-wrapper span,
+.topbar__dropmenu > ul > li > a,
+.topbar__user__login a,
+.topbar__admin__link a,
+.main-nav__link a {
+  color: $text-color;
+  font-weight: bold;
+  @include link-hover;
+}
+
+.topbar__dropmenu > ul > li > a::after {
+  border-top-color: $text-color !important;
+}
+
+.topbar__dropmenu .is-dropdown-submenu {
+  border-radius: $border-radius;
+  box-shadow: none;
+  border: none;
+  background: $beige-darker;
+
+  li {
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:not(:last-child) {
+      border-bottom: none;
+    }
+
+    a {
+      @include link;
+    }
+  }
+}
+
+.topbar__notifications,
+.topbar__conversations {
+  .icon {
+    fill: $link-color;
+  }
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+
+    .icon {
+      fill: $link-color-hover;
+    }
+  }
+}
+
+.topbar__search input {
+  background: $beige-darker;
+
+  .topbar__search:not(:focus-within) button {
+    background: $text-color;
+  }
+
+  &::placeholder {
+    color: $text-color;
+  }
+}
+
+.logo-wrapper {
+  margin-left: -1rem;
+
+  img {
+    max-height: 100px;
+  }
+}
+
+.main-nav__link a {
+  padding: 0 0 1rem 2rem;
+  font-size: $font-size-medium;
+}
+
+.main-nav__link--active a {
+  box-shadow: none;
+}
+
+.main-nav ul {
+  display: block;
+  float: right;
+}
+
+// Light on dark
+.tabs,
+.main-footer,
+.mini-footer {
+  background-color: $text-color;
+  color: $background;
+
+  a {
+    @include link;
+  }
+
+  .decidim-logo img {
+    filter: brightness(0.5);
+  }
+}
+
+.home-section:nth-of-type(2n + 1) {
+  background: $text-color;
+  color: $background;
+
+  .button.hollow {
+    @include button-hollow($background, $link-color-hover);
+  }
+}
+
+a {
+  @include link;
+}
+
+.reveal {
+  background-color: $beige-darker;
+  border-radius: $border-radius;
+  border: none;
+
+  .reveal__footer {
+    border-top: none;
+  }
+}
+
+.scope-picker.picker-header li:last-child a {
+  color: $text-color;
+}
+.scope-picker.picker-content .picker-scrollable-content a {
+  border: none;
+}
+
+.card {
+  background-color: $beige-darker;
+  border-radius: $border-radius;
+  border: none;
+
+  .card__link {
+    @include link;
+  }
+
+  .card-data__item,
+  .card__block ul {
+    color: $text-color;
+    border-color: $text-color;
+
+    &.card-data__item:last-child {
+      border-right: none;
+    }
+  }
+
+  .card__footer,
+  .card__top {
+    background: $text-color;
+    color: $white;
+    border-radius: 0 0 $border-radius $border-radius;
+
+    .button {
+      @include button-hollow($link-color-hover, $background);
+    }
+  }
+
+  .card__support__data--left {
+    color: $white;
+  }
+}
+
+.card--stack,
+.card--stack::after,
+.card--stack::before {
+  box-shadow: none;
+}
+
+.mini-title {
+  color: $text-color;
+  text-transform: none;
+}
+
+.section-heading {
+  font-size: $font-size-medium;
+  text-transform: none;
+
+  &::before {
+    content: "‣";
+    margin-right: 1rem;
+    border: none;
+    background: none;
+    color: currentColor;
+  }
+}
+
+.main-container,
+.tabs-content {
+  background: $beige-darker;
+  border: none;
+}
+
+.tabs,
+.side-panel {
+  border: none;
+  background: $text-color;
+}
+
+.side-panel__tabs .tabs-title {
+  border-bottom-color: $background;
+
+  & > [role="tab"],
+  & > a {
+    color: $background;
+
+    &:hover,
+    &.hover,
+    &:focus,
+    &.focus {
+      background: none;
+      color: $link-color-hover;
+    }
+  }
+
+  &.is-active > [role="tab"],
+  &.is-active > a {
+    color: $background;
+  }
+}
+
+.tabs-content {
+  &.vertical {
+    border: none;
+  }
+}
+
+.home-pam__title {
+  color: $beige-darker;
+}
