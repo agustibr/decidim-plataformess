@@ -21,6 +21,7 @@ Rails/Exit:
   Include:
     - app/**/*.rb
     - config/**/*.rb
+    - db/**/*.rb
     - lib/**/*.rb
   Exclude:
     - lib/**/*.rake
