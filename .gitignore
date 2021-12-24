@@ -32,3 +32,8 @@
 
 # Ignore public uploads
 public/uploads
+
+
+.rbenv-vars
+
+.stuff
