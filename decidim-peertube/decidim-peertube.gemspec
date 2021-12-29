@@ -2,14 +2,14 @@
 
 $LOAD_PATH.push File.expand_path("lib", __dir__)
 
-require "decidim/peertube/version"
+require "decidim/decidim_peertube/version"
 
 Gem::Specification.new do |s|
   s.version = Decidim::DecidimPeertube::VERSION
   s.authors = ["Vera Rojman"]
   s.email = ["vera@platoniq.net"]
   s.license = "AGPL-3.0"
-  s.homepage = "..."
+  s.homepage = "https://github.com/Platoniq"
   s.required_ruby_version = ">= 2.7"
 
   s.name = "decidim-decidim_peertube"

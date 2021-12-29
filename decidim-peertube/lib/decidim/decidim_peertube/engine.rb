@@ -10,7 +10,7 @@ module Decidim
       isolate_namespace Decidim::DecidimPeertube
 
       routes do
-        resources :sessions
+        root to: "peertube_videos#show"
       end
     end
   end

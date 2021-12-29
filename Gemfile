@@ -11,6 +11,8 @@ gem "decidim", "0.24.3"
 # gem "decidim-initiatives", "0.24.3"
 # gem "decidim-templates", "0.24.3"
 
+gem "decidim-decidim_peertube", path: "./decidim-peertube"
+
 gem "bootsnap", "~> 1.3"
 
 gem "puma", ">= 5.0.0"

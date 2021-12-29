@@ -1,0 +1,10 @@
+en:
+  decidim:
+    components:
+      peertube_video:
+        name: Peertube Video
+        settings:
+          global:
+            title: Title
+            video_url: Video URL 
+    peertube:

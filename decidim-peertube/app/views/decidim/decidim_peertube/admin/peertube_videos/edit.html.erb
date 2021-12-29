@@ -1,0 +1,20 @@
+
+
+C) button to create live video
+
+C.0 user has decidim_peertube_user associated?
+  YES: has access token?
+    NO --> C.1
+    YES --> C.2
+  NO --> C.1
+
+C.1 Login with peertube to save/update user's access token for API
+
+C.2 Show user channels ---> ask to choose one to create new live video
+
+C.3 Create new live video and return info to user:
+{
+    "rtmpUrl": "string",
+    "rtmpsUrl": "string",
+    "streamKey": "string"
+}
