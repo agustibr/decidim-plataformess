@@ -11,23 +11,6 @@ module Decidim
       paths["lib/tasks"] = nil
 
       routes do
-        # Add admin engine routes here
-        resources :constraints
-        resources :menu_hacks, except: [:show]
-        resources :config, param: :var, only: [:show, :update]
-        resources :scoped_styles, param: :var, only: [:create, :destroy]
-        resources :scoped_admins, param: :var, only: [:create, :destroy]
-        get :users, to: "config#users"
-        get :checks, to: "checks#index"
-        root to: "config#show", var: :editors
-      end
-
-      initializer "decidim_admin_awesome.assets" do |app|
-        app.config.assets.precompile += if version_prefix == "v0.23"
-                                          %w(legacy_decidim_admin_decidim_peertube_manifest.js decidim_admin_decidim_peertube_manifest.css)
-                                        else
-                                          %w(decidim_admin_decidim_peertube_manifest.js decidim_admin_decidim_peertube_manifest.css)
-                                        end
       end
 
       initializer "decidim_decidim_peertube.admin_mount_routes" do
@@ -38,11 +21,11 @@ module Decidim
 
       initializer "decidim_peertube.admin_menu" do
         Decidim.menu :admin_menu do |menu|
-          menu.item I18n.t("menu.decidim_peertube", scope: "decidim.admin", default: "Decidim Awesome"),
-                    decidim_admin_decidim_peertube.config_path(:editors),
-                    icon_name: "fire",
+          menu.item I18n.t("menu.decidim_peertube", scope: "decidim.admin", default: "Peertube"),
+                    decidim_admin_decidim_peertube.root_path,
+                    icon_name: "video",
                     position: 7.5,
-                    active: is_active_link?(decidim_admin_decidim_peertube.config_path(:editors), :inclusive),
+                    active: is_active_link?(decidim_admin_decidim_peertube.root_path, :inclusive),
                     if: defined?(current_user) && current_user&.read_attribute("admin")
         end
       end

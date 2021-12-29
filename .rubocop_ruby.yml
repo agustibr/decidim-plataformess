@@ -13,7 +13,9 @@ AllCops:
     - "**/Gemfile"
     - "**/Rakefile"
   Exclude:
+    - "bin/**/*"
     - "**/vendor/**/*"
+    - "db/**/*"
     - "development_app/**/*"
     - "spec/decidim_dummy_app/**/*"
     - "node_modules/**/*"
