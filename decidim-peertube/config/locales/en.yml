@@ -7,4 +7,8 @@ en:
           global:
             title: Title
             video_url: Video URL 
-    peertube:
+    decidim_peertube:
+      admin:
+        peertube_videos:
+          edit:
+            create_live: Create live video
