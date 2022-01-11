@@ -370,6 +370,10 @@ GEM
     db-query-matchers (0.9.0)
       activesupport (>= 4.0, <= 6.0)
       rspec (~> 3.0)
+    decidim-decidim_awesome (0.7.2)
+      decidim-admin (>= 0.23.0, < 0.25)
+      decidim-core (>= 0.23.0, < 0.25)
+      sassc (~> 2.3)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -905,6 +909,7 @@ DEPENDENCIES
   capistrano-sidekiq
   decidim!
   decidim-conferences!
+  decidim-decidim_awesome (~> 0.7.2)
   decidim-dev!
   faker (~> 2.14)
   figaro (~> 1.2)

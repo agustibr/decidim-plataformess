@@ -7,6 +7,7 @@ DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "release/
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-conferences", DECIDIM_VERSION
+gem "decidim-decidim_awesome", "~> 0.7.2"
 # gem "decidim-consultations", DECIDIM_VERSION
 # gem "decidim-elections", DECIDIM_VERSION
 # gem "decidim-initiatives", DECIDIM_VERSION
@@ -20,7 +21,6 @@ gem "uglifier", "~> 4.1"
 gem "faker", "~> 2.14"
 
 gem "wicked_pdf", "~> 1.4"
-gem "rubocop-faker"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
