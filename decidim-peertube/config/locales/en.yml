@@ -9,6 +9,15 @@ en:
             video_url: Video URL 
     decidim_peertube:
       admin:
+        peertube_sessions:
+          create:
+            invalid: There was a problem linking your Peertube account
+            success: Your Peertube account has been linked successfully
+          new:
+            title: Link Peertube account
+            password: Peertube password
+            submit: Link account
+            username: Peertube username or email
         peertube_videos:
           edit:
             create_live: Create live video

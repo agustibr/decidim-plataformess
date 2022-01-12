@@ -6,12 +6,13 @@ module Decidim
       class PeertubeVideosController < Decidim::Admin::Components::BaseController
         include HasPeertubeSession
 
+        before_action :check_peertube_session
+
         def edit; end
 
         def new
           # Render form to create live video
           # if peertube session no available, redirect to peertube-auth path
-          redirect_to new_peertube_session_path unless current_peertube_user&.access_token_valid?
 
           # list available channels for user:
           # /api/v1/accounts/<peertube-username>/video-channels

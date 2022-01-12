@@ -17,7 +17,11 @@ module Decidim
         end
 
         def current_peertube_user
-          PeertubeUser.find_by(decidim_user: current_user)
+          Decidim::DecidimPeertube::PeertubeUser.find_by(user: current_user)
+        end
+
+        def check_peertube_session
+          redirect_to new_peertube_session_path unless current_peertube_user_valid?
         end
       end
     end
