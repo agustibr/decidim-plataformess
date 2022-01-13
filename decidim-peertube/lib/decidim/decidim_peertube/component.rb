@@ -15,6 +15,10 @@ Decidim.register_component(:peertube_video) do |component|
     # Add your global settings
     settings.attribute :title, type: :string
     settings.attribute :video_url, type: :string
+
+    settings.attribute :rtmp_url, type: :string
+    settings.attribute :rtmps_url, type: :string
+    settings.attribute :stream_key, type: :string
   end
 
   component.seeds do |participatory_space|

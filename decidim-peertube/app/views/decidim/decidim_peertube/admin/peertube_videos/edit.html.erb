@@ -6,7 +6,7 @@
     <% end %>
   </div>
 
-  <% unless current_peertube_user %>
+  <% unless current_peertube_user_valid? %>
     <div class="column">
       <%= link_to new_peertube_session_path, class: "button" do %>
         <%= icon "person" %>
@@ -16,7 +16,7 @@
   <% end %>
 </div>
 
-<% if current_peertube_user %>
+<% if current_peertube_user_valid? %>
   <div class="card">
     <div class="card-divider">
       <h2 class="card-title">
@@ -36,13 +36,6 @@
           <%= t(".change_account") %>
         <% end %>
       </div>
-
-      <div class="button--title">
-        <%= link_to new_peertube_video_path, class: "button tiny" do %>
-          <%= icon "rss-alt" %>
-          <%= t(".create_live") %>
-        <% end %>
-      </div>
     </div>
 
     <div class="card-section">
@@ -58,17 +51,7 @@
           <%= t(".channels") %>:
         </dt>
         <dd>
-          <ul>
-            <% peertube_user_channels.each do |channel| %>
-              <li>
-                <%= link_to channel["url"], target: "_blank" do %>
-                  <%= image_tag Decidim::DecidimPeertube.url(channel.dig("avatar","path")), width: 50, height: 50 %>
-
-                  <%= channel["name"] %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+          <%= render partial: "channels" %>
         </dd>
       </dl>
     </div>

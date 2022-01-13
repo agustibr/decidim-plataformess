@@ -1,0 +1,41 @@
+<div class="table-scroll">
+  <table class="table-list">
+    <thead>
+      <tr>
+        <th>
+          <%= t(".avatar") %>
+        </th>
+        <th>
+          <%= t(".name") %>
+        </th>
+        <th>
+          <%= t(".url") %>
+        </th>
+        <th>
+          <%= t(".actions") %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% peertube_user_channels.each do |channel| %>
+        <tr>
+          <td>
+            <%= image_tag Decidim::DecidimPeertube.url(channel.dig("avatar","path")), width: 50, height: 50 %>
+          </td>
+          <td>
+            <%= channel["displayName"] %>
+          </td>
+          <td>
+            <%= link_to channel["name"], channel["url"], target: "_blank" %>
+          </td>
+          <td>
+            <%= link_to new_peertube_video_path(name: channel["id"]), class: "button" do %>
+              <%= icon "rss-alt" %>
+              <%= t(".create_live_video") %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

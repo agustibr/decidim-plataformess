@@ -31,6 +31,8 @@ module Decidim
         end
 
         def destroy
+          # enforce_permission_to :destroy, :peertube_session
+
           current_peertube_user.destroy!
 
           flash.now[:notice] = I18n.t("peertube_sessions.destroy.success", scope: "decidim.decidim_peertube.admin")

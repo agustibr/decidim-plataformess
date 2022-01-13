@@ -6,6 +6,9 @@ en:
         name: Peertube Video
         settings:
           global:
+            rtmp_url: Video RTMP URL
+            rtmps_url: Video RTMPS URL
+            stream_key: Video Stream Key
             title: Title
             video_url: Video URL
     decidim_peertube:
@@ -20,12 +23,24 @@ en:
             title: Link Peertube account
             username: Peertube username or email
         peertube_videos:
+          channels:
+            actions: Actions
+            avatar: Avatar
+            create_live_video: Create live video
+            name: Channel name
+            url: URL
+          create:
+            invalid: There was a problem creating the live video
+            success: The live video has been created successfully
           edit:
             account: Your Peertube account
             change_account: Change account
             channels: Your channels
-            create_live: Create live video
             embed: Embed a Peertube video
             link_account: Link Peertube account
             remove_account: Unlink account
             username: Username
+          new:
+            submit: Create live video
+            title: Create live video
+            video_name: Video name

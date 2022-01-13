@@ -3,16 +3,18 @@
 module Decidim
   module DecidimPeertube
     module Api
-      class CreateLiveRequest
+      class CreateLiveVideoRequest < Request
         # https://docs.joinpeertube.org/api-rest-reference.html#operation/addLive
         # https://docs.joinpeertube.org/use-create-upload-video
 
-        def initialize(token:, channel_id:, video_name:)
+        def initialize(token:, channel_id:, video_name:, video_description:)
           post_authenticated(
             token,
             "videos/live",
             channelId: channel_id,
-            name: video_name
+            name: video_name,
+            description: video_description,
+            saveReplay: true # ?
           )
 
           # which returns something like

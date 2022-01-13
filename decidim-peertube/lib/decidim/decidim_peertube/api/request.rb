@@ -31,9 +31,8 @@ module Decidim
         end
 
         def post_authenticated(token, path, params)
-          response = Faraday.post(api_path(path)) do |request|
+          response = Faraday.post(api_path(path), base_params.merge(params)) do |request|
             authorize(request, token)
-            request.params = base_params.merge(params)
           end
 
           @response = parse_response(response)

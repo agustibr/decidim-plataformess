@@ -9,48 +9,37 @@ module Decidim
 
         before_action :check_peertube_session, only: [:new, :create]
 
-        def edit; end
+        def show
+          # enforce_permission_to :show, :peertube_video
+        end
+
+        def edit
+          # enforce_permission_to :edit, :peertube_video
+        end
 
         def new
-          # Render form to create live video
-          # if peertube session no available, redirect to peertube-auth path
+          # enforce_permission_to :create, :peertube_video
 
-          # list available channels for user:
-          # /api/v1/accounts/<peertube-username>/video-channels
-          #
-          # let them choose in which of these channels they want to create the live video
+          @form = Decidim::DecidimPeertube::PeertubeVideoForm.new
         end
 
         def create
-          # https://docs.joinpeertube.org/api-rest-reference.html#operation/addLive
-          # https://docs.joinpeertube.org/use-create-upload-video
+          # enforce_permission_to :create, :peertube_video
 
-          # POST to /videos/live
-          #
-          # "Authorization: Bearer #{current_peertube_user.access_token}"
-          #
-          # with params
-          #
-          # {
-          #   channelId: "...",
-          #   name: "...", name for video
-          # }
-          #
-          # which returns something like
-          # {
-          #   "video": {
-          #     "id": 42,
-          #     "uuid": "9c9de5e8-0a1e-484a-b099-e80766180a6d",
-          #     "shortUUID": "2y84q2MQUMWPbiEcxNXMgC"
-          #   }
-          # }
-          #
-          # https://docs.joinpeertube.org/api-rest-reference.html#operation/getLiveId
-          #
-          # then GET /api/v1/videos/live/<video-id>
-          # where <video-id> is either id (integer) or UUIDv4 (string) or shortUUID (string)
-          # to retrieve streaming data for video, i.e.:
-          #
+          @form = form(Decidim::DecidimPeertube::PeertubeVideoForm).from_params(params)
+
+          Decidim::DecidimPeertube::CreateLiveVideo.call(@form, current_peertube_user.access_token, current_component) do
+            on(:ok) do
+              flash[:notice] = I18n.t("peertube_videos.create.success", scope: "decidim.decidim_peertube.admin")
+              redirect_to edit_component_path
+            end
+
+            on(:invalid) do
+              flash.now[:alert] = I18n.t("peertube_videos.create.invalid", scope: "decidim.decidim_peertube.admin")
+              render action: "new"
+            end
+          end
+
           #   {
           #     "rtmpUrl": "...",
           #     "rtmpsUrl": "...",
@@ -58,8 +47,6 @@ module Decidim
           #     "saveReplay": true,
           #     "permanentLive": true
           # }
-          #
-          # and display those values to decidim user
         end
       end
     end

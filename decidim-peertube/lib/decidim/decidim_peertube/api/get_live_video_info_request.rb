@@ -3,7 +3,7 @@
 module Decidim
   module DecidimPeertube
     module Api
-      class GetLiveInfoRequest
+      class GetLiveVideoInfoRequest < Request
         # https://docs.joinpeertube.org/api-rest-reference.html#operation/getLiveId
 
         def initialize(token:, video_id:)
