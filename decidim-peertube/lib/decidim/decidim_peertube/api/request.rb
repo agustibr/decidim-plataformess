@@ -9,29 +9,29 @@ module Decidim
 
         protected
 
-        def get(url)
-          response = Faraday.get(expand_url(url))
+        def get(path)
+          response = Faraday.get(api_path(path))
 
           @response = parse_response(response)
         end
 
-        def get_authenticated(token, url)
-          response = Faraday.get(expand_url(url)) do |request|
+        def get_authenticated(token, path)
+          response = Faraday.get(api_path(path)) do |request|
             authorize(request, token)
           end
 
           @response = parse_response(response)
         end
 
-        def post(url, params)
-          response = Faraday.post(expand_url(url), base_params.merge(params)) do |request|
+        def post(path, params)
+          response = Faraday.post(api_path(path), base_params.merge(params)) do |request|
           end
 
           @response = parse_response(response)
         end
 
-        def post_authenticated(token, url, params)
-          response = Faraday.post(expand_url(url)) do |request|
+        def post_authenticated(token, path, params)
+          response = Faraday.post(api_path(path)) do |request|
             authorize(request, token)
             request.params = base_params.merge(params)
           end
@@ -45,12 +45,8 @@ module Decidim
           request.headers["Authorization"] = "Bearer #{token}"
         end
 
-        def expand_url(url)
-          URI.join(base_url, url)
-        end
-
-        def base_url
-          URI.join("https://#{Decidim::DecidimPeertube.host}", "api/v1/")
+        def api_path(path)
+          URI.join(Decidim::DecidimPeertube::Api.base_url, path)
         end
 
         def base_params

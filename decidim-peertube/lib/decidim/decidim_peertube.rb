@@ -10,6 +10,10 @@ module Decidim
   module DecidimPeertube
     include ActiveSupport::Configurable
 
+    def self.url(path)
+      URI.join("https://#{Decidim::DecidimPeertube.host}", path).to_s
+    end
+
     config_accessor :credentials do
       {
         client_id: ENV.fetch("PEERTUBE_CLIENT_ID"),

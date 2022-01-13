@@ -1,3 +1,4 @@
+---
 en:
   decidim:
     components:
@@ -6,7 +7,7 @@ en:
         settings:
           global:
             title: Title
-            video_url: Video URL 
+            video_url: Video URL
     decidim_peertube:
       admin:
         peertube_sessions:
@@ -14,10 +15,17 @@ en:
             invalid: There was a problem linking your Peertube account
             success: Your Peertube account has been linked successfully
           new:
-            title: Link Peertube account
             password: Peertube password
             submit: Link account
+            title: Link Peertube account
             username: Peertube username or email
         peertube_videos:
           edit:
+            account: Your Peertube account
+            change_account: Change account
+            channels: Your channels
             create_live: Create live video
+            embed: Embed a Peertube video
+            link_account: Link Peertube account
+            remove_account: Unlink account
+            username: Username

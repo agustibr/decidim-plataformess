@@ -10,7 +10,9 @@ module Decidim
 
       routes do
         resources :peertube_videos, only: [:edit, :update, :new, :create]
-        resources :peertube_sessions, only: [:new, :create]
+        resources :peertube_sessions, only: [:new, :create] do
+          delete :destroy, on: :collection
+        end
 
         root to: "peertube_videos#edit"
       end

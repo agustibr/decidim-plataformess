@@ -8,7 +8,7 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
-        helper_method :current_peertube_user, :current_peertube_user_valid?
+        helper_method :current_peertube_user, :current_peertube_user_valid?, :peertube_user_channels
 
         private
 
@@ -22,6 +22,10 @@ module Decidim
 
         def check_peertube_session
           redirect_to new_peertube_session_path unless current_peertube_user_valid?
+        end
+
+        def peertube_user_channels
+          @peertube_user_channels ||= Decidim::DecidimPeertube::Api::ListUserChannelsRequest.new(username: current_peertube_user.peertube_username).response["data"]
         end
       end
     end

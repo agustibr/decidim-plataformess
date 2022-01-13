@@ -3,7 +3,7 @@
 module Decidim
   module DecidimPeertube
     module Api
-      class ListUserChannelsRequest
+      class ListUserChannelsRequest < Request
         # list available channels for user
         # /api/v1/accounts/<peertube-username>/video-channels
 

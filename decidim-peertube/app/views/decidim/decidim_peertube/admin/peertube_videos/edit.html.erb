@@ -1,4 +1,79 @@
-<%= link_to t(".create_live"), new_peertube_video_path, class: "button button--tiny" %>
+<div class="row">
+  <div class="column">
+    <%= link_to edit_component_path, class: "button" do %>
+      <%= icon "image" %>
+      <%= t(".embed") %>
+    <% end %>
+  </div>
+
+  <% unless current_peertube_user %>
+    <div class="column">
+      <%= link_to new_peertube_session_path, class: "button" do %>
+        <%= icon "person" %>
+        <%= t(".link_account") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<% if current_peertube_user %>
+  <div class="card">
+    <div class="card-divider">
+      <h2 class="card-title">
+        <%= t(".account") %>
+      </h2>
+
+      <div class="button--title">
+        <%= link_to peertube_sessions_path, method: :delete, class: "button tiny" do %>
+          <%= icon "x" %>
+          <%= t(".remove_account") %>
+        <% end %>
+      </div>
+
+      <div class="button--title">
+        <%= link_to new_peertube_session_path, class: "button tiny" do %>
+          <%= icon "person" %>
+          <%= t(".change_account") %>
+        <% end %>
+      </div>
+
+      <div class="button--title">
+        <%= link_to new_peertube_video_path, class: "button tiny" do %>
+          <%= icon "rss-alt" %>
+          <%= t(".create_live") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="card-section">
+      <dl>
+        <dt>
+          <%= t(".username") %>:
+        </dt>
+        <dd>
+          <%= current_peertube_user.peertube_username %>
+        </dd>
+
+        <dt>
+          <%= t(".channels") %>:
+        </dt>
+        <dd>
+          <ul>
+            <% peertube_user_channels.each do |channel| %>
+              <li>
+                <%= link_to channel["url"], target: "_blank" do %>
+                  <%= image_tag Decidim::DecidimPeertube.url(channel.dig("avatar","path")), width: 50, height: 50 %>
+
+                  <%= channel["name"] %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<% end %>
 
 <pre>
 

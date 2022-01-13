@@ -29,6 +29,14 @@ module Decidim
             end
           end
         end
+
+        def destroy
+          current_peertube_user.destroy!
+
+          flash.now[:notice] = I18n.t("peertube_sessions.destroy.success", scope: "decidim.decidim_peertube.admin")
+
+          redirect_to root_path
+        end
       end
     end
   end

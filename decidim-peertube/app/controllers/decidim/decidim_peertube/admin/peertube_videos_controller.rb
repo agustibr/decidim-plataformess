@@ -5,8 +5,9 @@ module Decidim
     module Admin
       class PeertubeVideosController < Decidim::Admin::Components::BaseController
         include HasPeertubeSession
+        helper PeertubeHelper
 
-        before_action :check_peertube_session
+        before_action :check_peertube_session, only: [:new, :create]
 
         def edit; end
 
