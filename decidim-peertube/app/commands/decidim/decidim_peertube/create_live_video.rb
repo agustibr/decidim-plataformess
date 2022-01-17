@@ -50,9 +50,13 @@ module Decidim
 
         settings = current_component.settings
         settings[:video_url] = Decidim::DecidimPeertube.url("videos/watch/#{uuid}")
-        settings[:rtmp_url] = live_video_info_request.response["rtmpUrl"]
-        settings[:rtmps_url] = live_video_info_request.response["rtmpsUrl"]
-        settings[:stream_key] = live_video_info_request.response["streamKey"]
+        
+        rtmp_url = [
+          live_video_info_request.response["rtmpUrl"],
+          live_video_info_request.response["streamKey"]
+        ].join("/")
+        
+        settings[:rtmp_url] = rtmp_url
 
         current_component.update!(settings: settings)
       end
