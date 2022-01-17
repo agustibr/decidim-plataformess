@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_134007) do
+ActiveRecord::Schema.define(version: 2022_01_17_115037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1191,9 +1191,10 @@ ActiveRecord::Schema.define(version: 2022_01_11_134007) do
 
   create_table "decidim_peertube_videos", force: :cascade do |t|
     t.bigint "decidim_component_id"
-    t.integer "peertube_video_id"
-    t.integer "peertube_channel_name"
+    t.string "peertube_video_id"
+    t.integer "peertube_channel_id"
     t.string "video_url"
+    t.string "rtmp_url"
     t.jsonb "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -38,9 +38,26 @@ en:
             channels: Your channels
             embed: Embed a Peertube video
             link_account: Link Peertube account
+            peertube_videos: Peertube videos
             remove_account: Unlink account
             username: Username
           new:
+            comments_enabled_help: Enable comments for this video
+            downloads_enabled_help: Allow users to download this video
+            permanent_live_help: Make live video permanent. You can stream multiple
+              times in a permanent live. The URL for your viewers won't change but
+              you cannot save the replays of your lives.
+            privacy_help: '"Unlisted" videos will be shareable only via a private
+              link, while "Public" videos can be seen by anyone.'
+            privacy_types:
+              public: Public
+              unlisted: Unlisted
             submit: Create live video
             title: Create live video
             video_name: Video name
+          videos:
+            actions: Actions
+            delete: Delete
+            empty: There aren't any videos associated with this component yet.
+            peertube_url: Peertube URL
+            stream_url: Stream URL

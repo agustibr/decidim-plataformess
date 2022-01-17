@@ -7,6 +7,8 @@ module Decidim
         include HasPeertubeSession
         helper PeertubeHelper
 
+        helper_method :peertube_videos
+
         before_action :check_peertube_session, only: [:new, :create]
 
         def show
@@ -31,7 +33,7 @@ module Decidim
           Decidim::DecidimPeertube::CreateLiveVideo.call(@form, current_peertube_user.access_token, current_component) do
             on(:ok) do
               flash[:notice] = I18n.t("peertube_videos.create.success", scope: "decidim.decidim_peertube.admin")
-              redirect_to edit_component_path
+              redirect_to root_path # change to edit_component_path
             end
 
             on(:invalid) do
@@ -39,14 +41,12 @@ module Decidim
               render action: "new"
             end
           end
+        end
 
-          #   {
-          #     "rtmpUrl": "...",
-          #     "rtmpsUrl": "...",
-          #     "streamKey": "...",
-          #     "saveReplay": true,
-          #     "permanentLive": true
-          # }
+        private
+
+        def peertube_videos
+          @peertube_videos ||= Decidim::DecidimPeertube::PeertubeVideo.where(component: current_component)
         end
       end
     end

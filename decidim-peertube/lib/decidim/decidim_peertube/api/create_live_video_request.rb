@@ -7,24 +7,26 @@ module Decidim
         # https://docs.joinpeertube.org/api-rest-reference.html#operation/addLive
         # https://docs.joinpeertube.org/use-create-upload-video
 
-        def initialize(token:, channel_id:, video_name:, video_description:)
+        def initialize(token:, params:)
+          params = {
+            channelId: params[:channel_id],
+            name: params[:video_name],
+            description: params[:video_description],
+            privacy: params[:privacy],
+            permanentLive: params[:permanent_live],
+            saveReplay: !params[:permanent_live],
+            commentsEnabled: params[:comments_enabled],
+            downloadEnabled: params[:downloads_enabled]
+            # FUTURE tags: params[:tags],
+            # FUTURE previewfile: params[:preview_file]
+            # FUTURE thumbnailfile: params[:thumbnail_file]
+          }.compact
+
           post_authenticated(
             token,
             "videos/live",
-            channelId: channel_id,
-            name: video_name,
-            description: video_description,
-            saveReplay: true # ?
+            params
           )
-
-          # which returns something like
-          # {
-          #   "video": {
-          #     "id": 42,
-          #     "uuid": "9c9de5e8-0a1e-484a-b099-e80766180a6d",
-          #     "shortUUID": "2y84q2MQUMWPbiEcxNXMgC"
-          #   }
-          # }
         end
       end
     end

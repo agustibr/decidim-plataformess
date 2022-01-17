@@ -29,7 +29,7 @@
             <%= link_to channel["name"], channel["url"], target: "_blank" %>
           </td>
           <td>
-            <%= link_to new_peertube_video_path(name: channel["id"]), class: "button" do %>
+            <%= link_to new_peertube_video_path(id: channel["id"]), class: "button" do %>
               <%= icon "rss-alt" %>
               <%= t(".create_live_video") %>
             <% end %>

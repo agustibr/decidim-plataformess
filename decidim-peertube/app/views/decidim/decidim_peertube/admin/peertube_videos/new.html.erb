@@ -3,20 +3,49 @@
     <div class="card-divider">
       <h2 class="card-title"><%= t(".title") %></h2>
     </div>
-
     <div class="card-section">
-      <%= f.hidden_field :channel_id, value: params["name"] %>
-
+      <%= f.hidden_field :channel_id, value: params["id"] %>
       <div class="row column">
         <%= f.text_field :video_name %>
       </div>
-
       <div class="row column">
-        <%= f.text_area :video_description %>
+        <%= f.text_area :video_description, rows: 3 %>
+      </div>
+      <div class="row column">
+        <div class="field">
+          <%= f.select :privacy, [
+            [t(".privacy_types.public"), 1],
+              [t(".privacy_types.unlisted"), 2]
+            ],
+            selected: 2,
+            prompt: "" %>
+          <p class="help-text">
+            <%= t(".privacy_help") %>
+          </p>
+        </div>
+      </div>
+      <div class="row column">
+        <div class="field">
+          <%= f.check_box :permanent_live, default: false %>
+          <p class="help-text">
+            <%= t(".permanent_live_help") %>
+          </p>
+        </div>
+        <div class="field">
+          <%= f.check_box :comments_enabled, default: false %>
+          <p class="help-text">
+            <%= t(".comments_enabled_help") %>
+          </p>
+        </div>
+        <div class="field">
+          <%= f.check_box :downloads_enabled, default: false %>
+          <p class="help-text">
+            <%= t(".downloads_enabled_help") %>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-
   <div class="button--double form-general-submit">
     <%= f.submit t(".submit") %>
   </div>

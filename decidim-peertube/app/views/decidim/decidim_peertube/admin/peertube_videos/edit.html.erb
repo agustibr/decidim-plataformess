@@ -4,7 +4,6 @@
       <%= icon "image" %>
       <%= t(".embed") %>
     <% end %>
-
     <% unless current_peertube_user_valid? %>
       <%= link_to new_peertube_session_path, class: "button m-s" do %>
         <%= icon "person" %>
@@ -13,21 +12,28 @@
     <% end %>
   </div>
 </div>
-
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t(".peertube_videos") %>
+    </h2>
+  </div>
+  <div class="card-section">
+    <%= render partial: "videos" %>
+  </div>
+</div>
 <% if current_peertube_user_valid? %>
   <div class="card">
     <div class="card-divider">
       <h2 class="card-title">
         <%= t(".account") %>
       </h2>
-
       <div class="button--title">
         <%= link_to peertube_sessions_path, method: :delete, class: "button tiny" do %>
           <%= icon "x" %>
           <%= t(".remove_account") %>
         <% end %>
       </div>
-
       <div class="button--title">
         <%= link_to new_peertube_session_path, class: "button tiny" do %>
           <%= icon "person" %>
@@ -35,7 +41,6 @@
         <% end %>
       </div>
     </div>
-
     <div class="card-section">
       <dl>
         <dt>
@@ -44,7 +49,6 @@
         <dd>
           <%= current_peertube_user.peertube_username %>
         </dd>
-
         <dt>
           <%= t(".channels") %>:
         </dt>

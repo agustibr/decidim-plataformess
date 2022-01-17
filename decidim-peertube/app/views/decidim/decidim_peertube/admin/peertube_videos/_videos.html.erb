@@ -1,0 +1,39 @@
+<% if peertube_videos.any? %>
+  <div class="table-scroll">
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th>
+            <%= t(".peertube_url") %>
+          </th>
+          <th>
+            <%= t(".stream_url") %>
+          </th>
+          <th>
+            <%= t(".actions") %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% peertube_videos.each do |video| %>
+          <tr>
+            <td>
+              <%= link_to video.data["video_name"], video.video_url, target: "_blank" %>
+            </td>
+            <td>
+              <%= video.rtmp_url %>
+            </td>
+            <td>
+              <%= link_to peertube_video_path(video), method: :delete, class: "button" do %>
+                <%= icon "trash" %>
+                <%= t(".delete") %> <%# TODO %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <%= t(".empty") %>
+<% end %>
