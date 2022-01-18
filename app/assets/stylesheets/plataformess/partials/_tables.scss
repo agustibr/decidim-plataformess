@@ -1,0 +1,25 @@
+@import "variables";
+
+table {
+  thead,
+  tbody,
+  tfoot {
+    border: none;
+  }
+
+  thead,
+  tfoot {
+    background-color: $text-color !important;
+    color: $beige;
+  }
+
+  tbody,
+  tfoot,
+  tbody tr:nth-child(2n) {
+    background: $beige-darker;
+  }
+
+  tr {
+    border-top: 1px solid $text-color;
+  }
+}

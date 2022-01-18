@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_134007) do
+ActiveRecord::Schema.define(version: 2022_01_18_120634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1379,6 +1379,23 @@ ActiveRecord::Schema.define(version: 2022_01_11_134007) do
     t.index ["token_for_type", "token_for_id"], name: "decidim_share_tokens_token_for"
   end
 
+  create_table "decidim_social_crowdfunding_campaigns", force: :cascade do |t|
+    t.bigint "decidim_organization_id"
+    t.jsonb "name"
+    t.jsonb "description"
+    t.string "slug"
+    t.string "url"
+    t.string "lang"
+    t.string "thumbnail_url"
+    t.decimal "amount"
+    t.decimal "minimum"
+    t.decimal "optimum"
+    t.jsonb "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_social_crowdfunding_campaigns_on_organization"
+  end
+
   create_table "decidim_sortitions_sortitions", force: :cascade do |t|
     t.bigint "decidim_component_id"
     t.integer "decidim_proposals_component_id"
@@ -1668,6 +1685,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_134007) do
   add_foreign_key "decidim_scopes", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
   add_foreign_key "decidim_scopes", "decidim_scopes", column: "parent_id"
+  add_foreign_key "decidim_social_crowdfunding_campaigns", "decidim_organizations"
   add_foreign_key "decidim_static_pages", "decidim_organizations"
   add_foreign_key "decidim_user_blocks", "decidim_users"
   add_foreign_key "decidim_user_blocks", "decidim_users", column: "blocking_user_id"

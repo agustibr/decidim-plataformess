@@ -1,0 +1,49 @@
+@import "variables";
+
+.card {
+  background-color: $beige-darker;
+  border-radius: $border-radius;
+  border: none;
+  color: $text-color;
+
+  .card__link {
+    @include link;
+  }
+
+  .card-data__item,
+  .card__block ul {
+    color: $text-color;
+    border-color: $text-color;
+
+    &.card-data__item:last-child {
+      border-right: none;
+    }
+  }
+
+  .card__footer,
+  .card__top {
+    background: $text-color;
+    color: $white;
+    border-radius: 0 0 $border-radius $border-radius;
+
+    .button {
+      @include button-hollow($link-color-hover, $background);
+    }
+  }
+
+  .card__support__data--left {
+    color: $white;
+  }
+}
+
+.card--stack,
+.card--stack::after,
+.card--stack::before {
+  box-shadow: none;
+}
+
+.card__footer,
+.card__icondata ul,
+.card__block ul {
+  border-color: $text-color;
+}
