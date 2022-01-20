@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim-module-social_crowdfunding
-  revision: 8908be768b573cf25bb5987cbdee2dff55a6f084
+  revision: e99db3fbc726203095e156261855339c29f2a3b5
   branch: main
   specs:
     decidim-social_crowdfunding (0.0.1)
@@ -503,7 +503,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.13.5)
+    graphql (1.13.6)
     hashdiff (1.0.1)
     hashie (5.0.0)
     highline (2.0.3)
