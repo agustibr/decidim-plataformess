@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim-module-social_crowdfunding
-  revision: 4024a02c4969c21a6b8da60acc29277b123b7cbb
+  revision: 8908be768b573cf25bb5987cbdee2dff55a6f084
   branch: main
   specs:
     decidim-social_crowdfunding (0.0.1)
@@ -725,7 +725,7 @@ GEM
     redcarpet (3.5.1)
     redis (4.5.1)
     regexp_parser (2.1.1)
-    request_store (1.5.0)
+    request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
