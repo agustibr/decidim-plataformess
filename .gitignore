@@ -37,6 +37,10 @@ public/uploads
 .rspec-failures
 .rbenv-vars
 
+coverage
+decidim-peertube/coverage
+
+decidim-peertube/spec/decidim_dummy/app
 spec/decidim_dummy_app
 
 config/deploy
