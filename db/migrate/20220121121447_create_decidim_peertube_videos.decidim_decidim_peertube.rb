@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# This migration comes from decidim_decidim_peertube (originally 20211224183443)
 
 class CreateDecidimPeertubeVideos < ActiveRecord::Migration[5.2]
   def change

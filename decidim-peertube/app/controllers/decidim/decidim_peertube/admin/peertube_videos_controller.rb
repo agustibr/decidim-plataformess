@@ -30,7 +30,7 @@ module Decidim
 
           @form = form(Decidim::DecidimPeertube::PeertubeVideoForm).from_params(params)
 
-          Decidim::DecidimPeertube::CreateLiveVideo.call(@form, current_peertube_user.access_token, current_component) do
+          Decidim::DecidimPeertube::CreateLiveVideo.call(@form, current_peertube_user, current_component) do
             on(:ok) do
               flash[:notice] = I18n.t("peertube_videos.create.success", scope: "decidim.decidim_peertube.admin")
               redirect_to root_path # change to edit_component_path
