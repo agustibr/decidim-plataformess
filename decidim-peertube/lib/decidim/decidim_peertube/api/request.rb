@@ -30,12 +30,20 @@ module Decidim
           @response = parse_response(response)
         end
 
-        def post_authenticated(token, path, params)
+        def post_authenticated(token, path, params = {})
           response = Faraday.post(api_path(path), base_params.merge(params)) do |request|
             authorize(request, token)
           end
 
           @response = parse_response(response)
+        end
+
+        def delete_authenticated(token, path, params = {})
+          response = Faraday.delete(api_path(path), base_params.merge(params)) do |request|
+            authorize(request, token)
+          end
+
+          raise Decidim::DecidimPeertube::Api::Error, response.body["error"] || response.status.to_s unless response.success?
         end
 
         private

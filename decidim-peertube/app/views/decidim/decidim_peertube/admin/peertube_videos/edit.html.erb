@@ -1,5 +1,9 @@
 <div class="card">
-  <div class="card-divider">
+  <div class="card-divider flex">
+    <%= link_to main_component_path(current_component), class: "button m-s", target: "_blank" do %>
+      <%= icon "eye" %>
+      <%= t(".visit") %>
+    <% end %>
     <%= link_to edit_component_path, class: "button m-s" do %>
       <%= icon "image" %>
       <%= t(".embed") %>
@@ -18,9 +22,7 @@
       <%= t(".peertube_videos") %>
     </h2>
   </div>
-  <div class="card-section">
-    <%= render partial: "videos" %>
-  </div>
+  <%= render partial: "videos" %>
 </div>
 <% if current_peertube_user_valid? %>
   <div class="card">

@@ -1,39 +1,48 @@
-<% if peertube_videos.any? %>
-  <div class="table-scroll">
-    <table class="table-list">
-      <thead>
-        <tr>
-          <th>
-            <%= t(".peertube_url") %>
-          </th>
-          <th>
-            <%= t(".stream_url") %>
-          </th>
-          <th>
-            <%= t(".actions") %>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% peertube_videos.each do |video| %>
+<div class="card-section">
+  <p class="callout primary">
+    <%= t(".rtmp_instructions") %>
+  </p>
+  <p class="callout warning">
+    <%= t(".rtmp_warning") %>
+  </p>
+</div>
+<div class="card-section">
+  <% if peertube_videos.any? %>
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
           <tr>
-            <td>
-              <%= link_to video.data["video_name"], video.video_url, target: "_blank" %>
-            </td>
-            <td>
-              <%= video.rtmp_url %>
-            </td>
-            <td>
-              <%= link_to peertube_video_path(video), method: :delete, class: "button" do %>
-                <%= icon "trash" %>
-                <%= t(".delete") %> <%# TODO %>
-              <% end %>
-            </td>
+            <th>
+              <%= t(".title") %>
+            </th>
+            <th>
+              <%= t(".stream_url") %>
+            </th>
+            <th class="actions">
+              <%= t(".actions") %>
+            </th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <%= t(".empty") %>
-<% end %>
+        </thead>
+        <tbody>
+          <% peertube_videos.each do |video| %>
+            <tr>
+              <td>
+                <%= link_to video.data["video_name"], video.video_url, target: "_blank" %>
+              </td>
+              <td>
+                <%= link_to video.rtmp_url, video.rtmp_url %>
+              </td>
+              <td class="table-list__actions">
+                <%= icon_link_to "external-link", video.video_url, t(".watch"), target: "_blank" %>
+                <%= icon_link_to "check", select_peertube_video_path(video), t(".select"), method: :post, data: { confirm: t(".confirm_select") } %>
+                <%= icon_link_to "circle-x", peertube_video_path(video), t(".delete"), method: :delete, data: { confirm: t(".confirm_delete") } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <%= t(".empty") %>
+  <% end %>
+</div>

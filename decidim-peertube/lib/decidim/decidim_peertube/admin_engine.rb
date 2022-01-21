@@ -9,7 +9,10 @@ module Decidim
       paths["lib/tasks"] = nil
 
       routes do
-        resources :peertube_videos, only: [:show, :edit, :update, :new, :create]
+        resources :peertube_videos, only: [:show, :edit, :update, :new, :create, :destroy] do
+          post :select, on: :member
+        end
+
         resources :peertube_sessions, only: [:new, :create] do
           delete :destroy, on: :collection
         end

@@ -4,7 +4,7 @@ class CreateDecidimPeertubeVideos < ActiveRecord::Migration[5.2]
   def change
     create_table :decidim_peertube_videos do |t|
       t.references :decidim_component, foreign_key: { to_table: :decidim_components }, index: { name: "index_decidim_peertube_videos_on_component" }
-      t.references :peertube_user, foreign_key: { to_table: :decidim_peertube_users }, index: { name: "index_decidim_peertube_videos_on_peertube_user" }
+      t.references :decidim_peertube_user, foreign_key: { to_table: :decidim_peertube_users }, index: { name: "index_decidim_peertube_videos_on_decidim_peertube_user" }
 
       t.string :peertube_video_id
       t.integer :peertube_channel_id

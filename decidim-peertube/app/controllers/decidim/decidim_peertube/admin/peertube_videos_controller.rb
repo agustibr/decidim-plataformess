@@ -16,7 +16,7 @@ module Decidim
         end
 
         def edit
-          # enforce_permission_to :edit, :peertube_video
+          # enforce_permission_to :update, :peertube_video
         end
 
         def new
@@ -43,10 +43,36 @@ module Decidim
           end
         end
 
+        def destroy
+          # enforce_permission_to :delete, :peertube_video
+
+          Decidim::DecidimPeertube::DestroyVideo.call(peertube_video, current_peertube_user) do
+            on(:ok) do
+              flash[:notice] = I18n.t("peertube_videos.create.success", scope: "decidim.decidim_peertube.admin")
+              redirect_to root_path
+            end
+          end
+        end
+
+        def select
+          # enforce_permission_to :update, :peertube_video
+
+          Decidim::DecidimPeertube::SelectVideo.call(peertube_video) do
+            on(:ok) do
+              flash[:notice] = I18n.t("peertube_videos.select.success", scope: "decidim.decidim_peertube.admin")
+              redirect_to root_path
+            end
+          end
+        end
+
         private
 
         def peertube_videos
           @peertube_videos ||= Decidim::DecidimPeertube::PeertubeVideo.where(component: current_component)
+        end
+
+        def peertube_video
+          @peertube_video ||= Decidim::DecidimPeertube::PeertubeVideo.find_by(id: params[:id])
         end
       end
     end

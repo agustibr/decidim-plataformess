@@ -25,7 +25,9 @@ module Decidim
         end
 
         def peertube_user_channels
-          @peertube_user_channels ||= Decidim::DecidimPeertube::Api::ListUserChannelsRequest.new(username: current_peertube_user.peertube_username).response["data"]
+          @peertube_user_channels ||=
+            current_peertube_user.video_channels ||
+            Decidim::DecidimPeertube::Api::ListUserChannelsRequest.new(username: current_peertube_user.peertube_username).response["data"]
         end
       end
     end
