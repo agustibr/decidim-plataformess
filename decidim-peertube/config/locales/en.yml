@@ -56,15 +56,20 @@ en:
             title: Create live video
             video_name: Video name
           select:
-            success: The selected video will now be embedded in the public component page.
+            success: The selected video will now be embedded in the public component
+              page.
           videos:
             actions: Actions
-            confirm_delete: Do you want to delete this video? This action cannot be undone.
+            confirm_delete: Do you want to delete this video? This action cannot be
+              undone.
             confirm_select: Do you want to embed this video in the component?
             delete: Delete
             empty: There aren't any videos associated with this component yet.
-            rtmp_instructions: Copy the Stream URL below and paste in your videoconference application when it asks for your 'Live stream key', after clicking on 'Start live stream'.
-            rtmp_warning: Don't share the Stream URL with anyone, it contains a key that should be kept private.
+            rtmp_instructions: Copy the Stream URL below and paste in your videoconference
+              application when it asks for your 'Live stream key', after clicking
+              on 'Start live stream'.
+            rtmp_warning: Don't share the Stream URL with anyone, it contains a key
+              that should be kept private.
             select: Embed this video in the component
             stream_url: Stream URL
             title: Title
