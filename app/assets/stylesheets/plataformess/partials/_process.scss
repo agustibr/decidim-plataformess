@@ -1,0 +1,43 @@
+@import "variables";
+
+.process-nav {
+  box-shadow: none;
+  background: $text-color;
+
+  &__content {
+    li {
+      @include button;
+
+      &:hover {
+        background: $text-color;
+      }
+
+      a {
+        text-transform: none;
+        color: $beige;
+
+        &:hover {
+          color: $link-color-hover;
+          text-decoration: none;
+        }
+      }
+
+      &.is-active {
+        a {
+          text-decoration: underline;
+        }
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.process-header__phase,
+.process-phase {
+  background: $beige-darker;
+}
+
+.text-highlight {
+  color: $beige;
+  text-shadow: 0 0 10px transparentize($text-color, 0.8);
+}

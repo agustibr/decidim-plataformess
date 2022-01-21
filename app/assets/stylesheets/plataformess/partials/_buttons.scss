@@ -1,0 +1,14 @@
+@import "variables";
+
+.button {
+  @include button;
+}
+
+.button.hollow {
+  @include button-hollow($text-color, $link-color-hover);
+
+  &.light {
+    border-color: $beige;
+    color: $beige;
+  }
+}

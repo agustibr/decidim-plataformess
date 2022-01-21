@@ -1,0 +1,120 @@
+$brand: #2d4057;
+$beige: #f3deca;
+$beige-darker: #e6d1bf;
+$background: $beige;
+$text-color: $brand;
+$primary: #4097aa;
+$secondary: #fa9483;
+$link-color: $primary;
+$link-color-hover: $secondary;
+$footer-bg: $brand;
+$font-size: 16px;
+$font-size-medium: 20px;
+$white: white;
+$border-radius: 0;
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: font-url("PublicSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@mixin link-hover {
+  transition: all 0.3s;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    color: $link-color-hover;
+    text-decoration: none;
+  }
+}
+
+@mixin link {
+  color: $link-color;
+  text-decoration: none;
+  @include link-hover;
+}
+
+@mixin button-hover {
+  transition: all 0.3s;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    color: $white;
+    background: $link-color-hover;
+  }
+}
+
+@mixin button-hollow-hover($color) {
+  transition: all 0.3s;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    background: none;
+    color: $color;
+    border-color: $color;
+  }
+}
+
+@mixin button {
+  color: $white;
+  background: $text-color;
+
+  @include button-hover;
+}
+
+@mixin button-hollow($color, $color-hover) {
+  color: $color;
+  border: 1px solid $color;
+  background: none;
+
+  @include button-hollow-hover($color-hover);
+}
+
+@mixin small-screen {
+  @media print, screen and (max-width: 40em) {
+    @content;
+  }
+}
+
+@mixin mid-screen {
+  @media print, screen and (min-width: 40em) and (max-width: 64em) {
+    @content;
+  }
+}
+
+@mixin big-screen {
+  @media print, screen and (min-width: 64em) {
+    @content;
+  }
+}
