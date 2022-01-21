@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_121447) do
+ActiveRecord::Schema.define(version: 2022_01_21_163624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1191,7 +1191,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_121447) do
 
   create_table "decidim_peertube_videos", force: :cascade do |t|
     t.bigint "decidim_component_id"
-    t.bigint "peertube_user_id"
+    t.bigint "decidim_peertube_user_id"
     t.string "peertube_video_id"
     t.integer "peertube_channel_id"
     t.string "video_url"
@@ -1200,7 +1200,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_121447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["decidim_component_id"], name: "index_decidim_peertube_videos_on_component"
-    t.index ["peertube_user_id"], name: "index_decidim_peertube_videos_on_peertube_user"
+    t.index ["decidim_peertube_user_id"], name: "index_decidim_peertube_videos_on_decidim_peertube_user"
   end
 
   create_table "decidim_proposals_collaborative_draft_collaborator_requests", force: :cascade do |t|
@@ -1714,7 +1714,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_121447) do
   add_foreign_key "decidim_participatory_processes", "decidim_scope_types"
   add_foreign_key "decidim_peertube_users", "decidim_users"
   add_foreign_key "decidim_peertube_videos", "decidim_components"
-  add_foreign_key "decidim_peertube_videos", "decidim_peertube_users", column: "peertube_user_id"
+  add_foreign_key "decidim_peertube_videos", "decidim_peertube_users"
   add_foreign_key "decidim_scope_types", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
