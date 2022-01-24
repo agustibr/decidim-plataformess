@@ -20,7 +20,7 @@
       <% peertube_user_channels.each do |channel| %>
         <tr>
           <td>
-            <%= image_tag Decidim::DecidimPeertube.url(channel.dig("avatar","path")), width: 50, height: 50 %>
+            <%= image_tag Decidim::DecidimPeertube.url(channel.dig("avatar","path")), width: 50, height: 50 if channel.dig("avatar", "path").present? %>
           </td>
           <td>
             <%= channel["displayName"] %>

@@ -1,0 +1,29 @@
+{
+  "total": 1,
+  "data": [
+    {
+      "displayName": "Videos of Framasoft",
+      "description": "Videos made with <3 by Framasoft",
+      "support": "Please support our work on https://soutenir.framasoft.org/en/ <3",
+      "id": 42,
+      "isLocal": true,
+      "updatedAt": "2019-08-24T14:15:22Z",
+      "ownerAccount": {
+        "id": 0,
+        "uuid": "9c9de5e8-0a1e-484a-b099-e80766180a6d"
+      },
+      "url": "string",
+      "name": "chocobozzz",
+      "host": "example.com",
+      "hostRedundancyAllowed": true,
+      "followingCount": 0,
+      "followersCount": 0,
+      "createdAt": "2019-08-24T14:15:22Z",
+      "avatar": {
+        "path": "string",
+        "createdAt": "2019-08-24T14:15:22Z",
+        "updatedAt": "2019-08-24T14:15:22Z"
+      }
+    }
+  ]
+}

@@ -1,16 +1,23 @@
 # frozen_string_literal: true
 
 shared_context "with stubs example api" do
+  let(:base_url) { "example.org" }
   let(:api_url) { "https://api.example.org/" }
   let(:http_method) { :get }
   let(:http_status) { 200 }
   let(:data) { {} }
-  let(:params) { {} }
+  let(:headers) { {} }
 
   before do
+    allow(Decidim::DecidimPeertube).to receive(:host).and_return(base_url)
     allow(Decidim::DecidimPeertube::Api).to receive(:base_url).and_return(api_url)
     stub_request(http_method, /api\.example\.org/)
-      .to_return(status: http_status, body: data.to_json, headers: {})
+      .to_return(status: http_status, body: data.to_json, headers: headers)
+  end
+
+  def stub_api_request(method: :get, data: {}, headers: {}, status: 200)
+    stub_request(method, /api\.example\.org/)
+      .to_return(status: status, body: data.to_json, headers: headers)
   end
 end
 

@@ -11,6 +11,7 @@ module Decidim
     include ActiveSupport::Configurable
 
     def self.url(path)
+      byebug
       URI.join("https://#{Decidim::DecidimPeertube.host}", path).to_s
     end
 
