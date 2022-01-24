@@ -40,7 +40,7 @@ public/uploads
 coverage
 decidim-peertube/coverage
 
-decidim-peertube/spec/decidim_dummy/app
+decidim-peertube/spec/decidim_dummy_app
 spec/decidim_dummy_app
 
 config/deploy
