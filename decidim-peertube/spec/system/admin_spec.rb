@@ -11,6 +11,7 @@ describe "Visit the admin page", type: :system do
   let!(:admin) { create(:user, :admin, :confirmed, organization: organization) }
 
   let(:edit_component_path) { Decidim::EngineRouter.admin_proxy(component.participatory_space).edit_component_path(component.id) }
+  let(:new_peertube_session_path) { Decidim::EngineRouter.admin_proxy(component).new_peertube_session_path }
 
   before do
     switch_to_host(organization.host)
