@@ -71,7 +71,7 @@ describe "Visit the admin page", type: :system do
 
       expect(page).to have_link "Unlink account", href: peertube_session_path
       expect(page).to have_link "Change account", href: new_peertube_session_path
-      
+
       expect(page).to have_content peertube_user.peertube_username
       expect(page).to have_content peertube_user.video_channels.first["displayName"]
     end
