@@ -12,7 +12,7 @@ describe "Visit the admin page", type: :system do
 
   let(:edit_component_path) { Decidim::EngineRouter.admin_proxy(component.participatory_space).edit_component_path(component.id) }
   let(:new_peertube_session_path) { Decidim::EngineRouter.admin_proxy(component).new_peertube_session_path }
-  let(:peertube_session_path) { Decidim::EngineRouter.admin_proxy(component).peertube_session_path }
+  let(:destroy_peertube_session_path) { Decidim::EngineRouter.admin_proxy(component).peertube_sessions_path }
 
   before do
     switch_to_host(organization.host)
@@ -69,7 +69,7 @@ describe "Visit the admin page", type: :system do
       expect(page).not_to have_link "Link Peertube account"
       expect(page).to have_content "Your Peertube account"
 
-      expect(page).to have_link "Unlink account", href: peertube_session_path
+      expect(page).to have_link "Unlink account", href: destroy_peertube_session_path
       expect(page).to have_link "Change account", href: new_peertube_session_path
 
       expect(page).to have_content peertube_user.peertube_username
