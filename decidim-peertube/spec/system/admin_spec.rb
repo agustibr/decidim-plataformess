@@ -12,7 +12,10 @@ describe "Visit the admin page", type: :system do
 
   let(:edit_component_path) { Decidim::EngineRouter.admin_proxy(component.participatory_space).edit_component_path(component.id) }
   let(:new_peertube_session_path) { Decidim::EngineRouter.admin_proxy(component).new_peertube_session_path }
+  let(:new_peertube_video_path) { Decidim::EngineRouter.admin_proxy(component).new_peertube_video_path(id: channel_id) }
   let(:destroy_peertube_session_path) { Decidim::EngineRouter.admin_proxy(component).peertube_sessions_path }
+  let(:destroy_peertube_video_path) { Decidim::EngineRouter.admin_proxy(component).peertube_video_path(peertube_video) }
+  let(:select_peertube_video_path) { Decidim::EngineRouter.admin_proxy(component).select_peertube_video_path(peertube_video) }
 
   before do
     switch_to_host(organization.host)
@@ -75,5 +78,64 @@ describe "Visit the admin page", type: :system do
       expect(page).to have_content peertube_user.peertube_username
       expect(page).to have_content peertube_user.video_channels.first["displayName"]
     end
+  end
+
+  describe "create a live video" do
+    let!(:peertube_user) { create(:peertube_user, user: admin, access_token: access_token) }
+    let(:channel_id) { peertube_user.video_channels.first["id"] }
+
+    let(:access_token) { "4cc3s-t0k3n" }
+    let(:headers) do
+      {
+        "Authorization": "Bearer #{access_token}"
+      }
+    end
+
+    let(:rtmp_url) { "rtmp://test-rtmp:8000/live" }
+    let(:stream_key) { "a-stream-key" }
+    let(:video_uuid) { "42-is-the-number" }
+
+    let(:peertube_video) { Decidim::DecidimPeertube::PeertubeVideo.last }
+
+    before do
+      stub_api_request(method: :post, data: { "video" => { "uuid" => video_uuid } }, headers: headers)
+      stub_api_request(method: :get, data: { "rtmpUrl" => rtmp_url, "streamKey" => stream_key }, headers: headers)
+      visit new_peertube_video_path
+    end
+
+    it "works" do
+      fill_in "peertube_video[video_name]", with: "A new video"
+      fill_in "peertube_video[video_description]", with: "The video description is very short"
+      select "Public", from: "peertube_video[privacy]"
+
+      click_button "Create live video"
+
+      expect(page).to have_content "The live video has been created successfully"
+      expect(page).to have_content "A new video"
+      expect(page).to have_link [rtmp_url, stream_key].join("/")
+
+      expect(page).to have_content "Copy the Stream URL below"
+      expect(page).to have_content "Don't share the Stream URL"
+
+      expect(page).to have_link "Watch in Peertube", href: "https://example.org/videos/watch/#{video_uuid}"
+      expect(page).to have_link "Embed this video in the component", href: select_peertube_video_path
+      expect(page).to have_link "Delete", href: destroy_peertube_video_path
+    end
+  end
+
+  describe "select a live video" do
+    
+  end
+
+  describe "delete a live video" do
+    
+  end
+  
+  describe "change peertube account" do
+    
+  end
+  
+  describe "log out" do
+    
   end
 end

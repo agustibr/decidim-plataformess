@@ -27,7 +27,6 @@ module Decidim
 
         def create
           # enforce_permission_to :create, :peertube_video
-
           @form = form(Decidim::DecidimPeertube::PeertubeVideoForm).from_params(params)
 
           Decidim::DecidimPeertube::CreateLiveVideo.call(@form, current_peertube_user, current_component) do
