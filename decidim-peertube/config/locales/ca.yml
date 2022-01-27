@@ -1,0 +1,77 @@
+---
+ca:
+  decidim:
+    components:
+      peertube_video:
+        name: Vídeo de Peertube
+        settings:
+          global:
+            title: Títol
+            video_url: URL del Vídeo
+    decidim_peertube:
+      admin:
+        peertube_sessions:
+          create:
+            invalid: No s'ha pogut enllaçar el teu compte de Peertube
+            success: S'ha enllaçat el teu compte de Peertube
+          new:
+            password: Contrassenya del compte de Peertube
+            submit: Enllaça el compte
+            title: Enllaça el compte de Peertube
+            username: Nom d'usuària o e-mail del compte de Peertube
+        peertube_videos:
+          channels:
+            actions: Accions
+            avatar: Avatar
+            create_live_video: Crea un vídeo en directe
+            name: Nom del canal
+            url: URL
+          create:
+            invalid: No s'ha pogut crear el vídeo en directe
+            success: S'ha creat el vídeo en directe
+          destroy:
+            success: S'ha esborrat el vídeo en directe
+          edit:
+            account: El teu compte de Peertube
+            change_account: Canvia de compte
+            channels: Els teus canals
+            embed: Insereix un vídeo de Peertube
+            link_account: Enllaça el compte de Peertube
+            peertube_videos: Vídeos de Peertube
+            remove_account: Desenllaça el compte
+            username: Nom d'usuària
+            visit: Visita el component
+          new:
+            comments_enabled_help: Habilita comentaris per a aquest vídeo
+            downloads_enabled_help: Permet que les usàries descarreguin aquest vídeo
+            permanent_live_help: Fes que l'enllaç al vídeo en directe sigui permanent.
+              Així podràs reproduir moltes vegades en un mateix vídeo. La URL per
+              les espectadores serà sempre la mateixa, però no podràs desar el vídeo
+              per a què es vegi un cop acabi el directe.
+            privacy_help: Els vídeos "No llistats" només es podran compartir amb un
+              link privat, mentre que els vídeos "Públics" podran ser trobats fàcilment
+              a la plataforma.
+            privacy_types:
+              public: Públic
+              unlisted: No llistat
+            submit: Crea el vídeo en directe
+            title: Crea un vídeo en directe
+            video_name: Nom del vídeo
+          select:
+            success: El vídeo seleccionat s'inserirà a la pàgina pública del component.
+          videos:
+            actions: Accions
+            confirm_delete: Vols eliminar aquest vídeo? Aquesta acció no es podrà
+              desfer.
+            confirm_select: Vols inserir el vídeo al component?
+            delete: Eliminar
+            empty: Encara no hi ha cap vídeo associat a aquest component.
+            rtmp_instructions: Copia la "Stream URL" que surt al llistat i enganxa-la
+              en last teva aplicació de videoconferències quan et demani la "Live
+              stream key", després de clicar a "Start live stream".
+            rtmp_warning: No comparteixis la "Stream URL" amb ningú, conté una contrassenya
+              que ha de ser privada
+            select: Insereix aquest vídeo al component
+            stream_url: Stream URL
+            title: Títol
+            watch: Veure a Peertube
