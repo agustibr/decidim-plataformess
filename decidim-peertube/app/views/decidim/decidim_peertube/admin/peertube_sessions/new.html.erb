@@ -3,18 +3,15 @@
     <div class="card-divider">
       <h2 class="card-title"><%= t(".title") %></h2>
     </div>
-
     <div class="card-section">
       <div class="row column">
-        <%= f.text_field :username %>
+        <%= f.text_field :username, label: t(".username") %>
       </div>
-
       <div class="row column">
-        <%= f.password_field :password %>
+        <%= f.password_field :password, label: t(".password") %>
       </div>
     </div>
   </div>
-
   <div class="button--double form-general-submit">
     <%= f.submit t(".submit") %>
   </div>

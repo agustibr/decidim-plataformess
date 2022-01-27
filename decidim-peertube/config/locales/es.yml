@@ -15,10 +15,10 @@ es:
             invalid: No se ha podido enlazar tu cuenta de Peertube
             success: Tu cuenta de Peertube se ha enlazado
           new:
-            password: Contraseña de Peertube
+            password: Contraseña (de Peertube)
             submit: Enlazar cuenta
             title: Enlazar cuenta de Peertube
-            username: Nombre de usuaria o e-mail de la cuenta de Peertube
+            username: Nombre de usuaria o e-mail (de Peertube)
         peertube_videos:
           channels:
             actions: Acciones
@@ -42,12 +42,16 @@ es:
             username: Nombre de usuaria
             visit: Visitar componente
           new:
+            comments_enabled: Habilitar comentarios
             comments_enabled_help: Habilita comentarios para este video
+            downloads_enabled: Habilitar descargas
             downloads_enabled_help: Permite que las usuarias descarguen este video
+            permanent_live: Directo permanente
             permanent_live_help: Haz que el enlace al video en directo sea permanente.
               Así podrás reproducir muchas veces en un mismo video. La URL para las
               espectadoras será siempre la misma, pero no podrás guardar el video
               para que sea visto una vez finalizado el directo.
+            privacy: Privacidad
             privacy_help: Los videos "Sin listar" solo se pueden compartir con un
               enlace privado, mientras que los "Públicos" pueden ser encontrados fácilmente
               en la plataforma.
@@ -56,6 +60,7 @@ es:
               unlisted: Sin listar
             submit: Crear video en directo
             title: Crear video en directo
+            video_description: Descripción del video
             video_name: Nombre del video
           select:
             success: El video seleccionado será insertado en la página pública del

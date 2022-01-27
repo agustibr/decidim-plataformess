@@ -84,6 +84,10 @@ describe "Visit the admin page", type: :system do
     let!(:peertube_user) { create(:peertube_user, user: admin, access_token: access_token) }
     let(:access_token) { "4cc3s-t0k3n" }
 
+    before do
+      visit manage_component_path(component)
+    end
+
     describe "create live videos" do
       let(:channel_id) { peertube_user.video_channels.first["id"] }
 
@@ -126,28 +130,30 @@ describe "Visit the admin page", type: :system do
     end
 
     describe "manage videos" do
-      let!(:peertube_video) { create(:peertube_video, component: component, peertube_user: peertube_user) }
+      let(:video_url) { "https://example.org/videos/watch/fake-video-url" }
+      let(:embed_url) { "https://example.org/videos/embed/fake-video-url" }
+      let!(:peertube_video) { create(:peertube_video, component: component, peertube_user: peertube_user, video_url: video_url) }
 
       it "allows to select a live video and embed it in public component" do
         visit main_component_path(component)
-        expect(page.find("iframe")[:src]).not_to eq(peertube_video.video_url.gsub("watch", "embed"))
+        expect(page.find("iframe")[:src]).not_to eq(embed_url)
 
         visit manage_component_path(component)
 
-        click_button "Embed this video in the component"
+        click_link "Embed this video in the component"
 
         visit main_component_path(component)
-        expect(page.find("iframe")[:src]).to eq(peertube_video.video_url.gsub("watch", "embed"))
+        expect(page.find("iframe")[:src]).to eq(embed_url)
       end
 
       it "allows to delete a live video" do
         visit manage_component_path(component)
 
-        expect(page).to have_content peertube_video.data["video_name"]
+        expect(page).to have_content video_url
 
-        click_button "Delete"
+        click_link "Delete"
 
-        expect(page).not_to have_content peertube_video.data["video_name"]
+        expect(page).not_to have_content video_url
         expect(Decidim::DecidimPeertube::PeertubeVideo.find_by(id: peertube_video.id)).to be_blank
       end
     end

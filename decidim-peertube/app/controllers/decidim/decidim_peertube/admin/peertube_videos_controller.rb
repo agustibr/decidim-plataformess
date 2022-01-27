@@ -47,7 +47,7 @@ module Decidim
 
           Decidim::DecidimPeertube::DestroyVideo.call(peertube_video, current_peertube_user) do
             on(:ok) do
-              flash[:notice] = I18n.t("peertube_videos.create.success", scope: "decidim.decidim_peertube.admin")
+              flash[:notice] = I18n.t("peertube_videos.destroy.success", scope: "decidim.decidim_peertube.admin")
               redirect_to root_path
             end
           end

@@ -42,11 +42,15 @@ en:
             username: Username
             visit: Visit component
           new:
+            comments_enabled: Enable comments
             comments_enabled_help: Enable comments for this video
+            downloads_enabled: Enable downloads
             downloads_enabled_help: Allow users to download this video
+            permanent_live: Permanent live
             permanent_live_help: Make live video permanent. You can stream multiple
               times in a permanent live. The URL for your viewers won't change but
               you cannot save the replays of your lives.
+            privacy: Privacy
             privacy_help: '"Unlisted" videos will be shareable only via a private
               link, while "Public" videos can be seen by anyone.'
             privacy_types:
@@ -54,6 +58,7 @@ en:
               unlisted: Unlisted
             submit: Create live video
             title: Create live video
+            video_description: Video description
             video_name: Video name
           select:
             success: The selected video will now be embedded in the public component

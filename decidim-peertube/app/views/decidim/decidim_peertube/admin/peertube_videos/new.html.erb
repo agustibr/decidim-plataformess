@@ -6,10 +6,10 @@
     <div class="card-section">
       <%= f.hidden_field :channel_id, value: params["id"] %>
       <div class="row column">
-        <%= f.text_field :video_name %>
+        <%= f.text_field :video_name, label: t(".video_name") %>
       </div>
       <div class="row column">
-        <%= f.text_area :video_description, rows: 3 %>
+        <%= f.text_area :video_description, rows: 3, label: t(".video_description") %>
       </div>
       <div class="row column">
         <div class="field">
@@ -17,6 +17,7 @@
             [t(".privacy_types.public"), 1],
               [t(".privacy_types.unlisted"), 2]
             ],
+            label: t(".privacy"),
             selected: 2,
             prompt: "" %>
           <p class="help-text">
@@ -26,19 +27,19 @@
       </div>
       <div class="row column">
         <div class="field">
-          <%= f.check_box :permanent_live, default: false %>
+          <%= f.check_box :permanent_live, label: t(".permanent_live"), default: false %>
           <p class="help-text">
             <%= t(".permanent_live_help") %>
           </p>
         </div>
         <div class="field">
-          <%= f.check_box :comments_enabled, default: false %>
+          <%= f.check_box :comments_enabled, label: t(".comments_enabled"), default: false %>
           <p class="help-text">
             <%= t(".comments_enabled_help") %>
           </p>
         </div>
         <div class="field">
-          <%= f.check_box :downloads_enabled, default: false %>
+          <%= f.check_box :downloads_enabled, label: t(".downloads_enabled"), default: false %>
           <p class="help-text">
             <%= t(".downloads_enabled_help") %>
           </p>

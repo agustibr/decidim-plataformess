@@ -15,10 +15,10 @@ ca:
             invalid: No s'ha pogut enllaçar el teu compte de Peertube
             success: S'ha enllaçat el teu compte de Peertube
           new:
-            password: Contrassenya del compte de Peertube
+            password: Contrassenya (de Peertube)
             submit: Enllaça el compte
             title: Enllaça el compte de Peertube
-            username: Nom d'usuària o e-mail del compte de Peertube
+            username: Nom d'usuària o e-mail (de Peertube)
         peertube_videos:
           channels:
             actions: Accions
@@ -42,12 +42,16 @@ ca:
             username: Nom d'usuària
             visit: Visita el component
           new:
+            comments_enabled: Habilita comentaris
             comments_enabled_help: Habilita comentaris per a aquest vídeo
+            downloads_enabled: Habilita descàrregues
             downloads_enabled_help: Permet que les usàries descarreguin aquest vídeo
+            permanent_live: Enllaç permanent
             permanent_live_help: Fes que l'enllaç al vídeo en directe sigui permanent.
               Així podràs reproduir moltes vegades en un mateix vídeo. La URL per
               les espectadores serà sempre la mateixa, però no podràs desar el vídeo
               per a què es vegi un cop acabi el directe.
+            privacy: Privacitat
             privacy_help: Els vídeos "No llistats" només es podran compartir amb un
               link privat, mentre que els vídeos "Públics" podran ser trobats fàcilment
               a la plataforma.
@@ -56,6 +60,7 @@ ca:
               unlisted: No llistat
             submit: Crea el vídeo en directe
             title: Crea un vídeo en directe
+            video_description: Descripció del vídeo
             video_name: Nom del vídeo
           select:
             success: El vídeo seleccionat s'inserirà a la pàgina pública del component.
