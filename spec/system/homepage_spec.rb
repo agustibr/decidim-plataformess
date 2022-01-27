@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require "rails_helper"
 
 describe "Visit the home page", type: :system, perform_enqueued: true do
-  let(:organization) { create :organization, available_locales: [:en] }
+  let(:organization) { create :organization }
 
   before do
     switch_to_host(organization.host)
