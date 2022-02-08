@@ -16,8 +16,8 @@ module Decidim
 
     config_accessor :credentials do
       {
-        client_id: ENV.fetch("PEERTUBE_CLIENT_ID"),
-        client_secret: ENV.fetch("PEERTUBE_CLIENT_SECRET")
+        client_id: ENV.fetch("PEERTUBE_CLIENT_ID", "fake-peertube-client-id"),
+        client_secret: ENV.fetch("PEERTUBE_CLIENT_SECRET", "fake-peertube-client-secret")
       }
     end
 
