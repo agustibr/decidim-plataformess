@@ -445,7 +445,7 @@ GEM
       rest-client (>= 1.6)
     eventmachine (1.2.7)
     eventmachine_httpserver (0.2.1)
-    excon (0.90.0)
+    excon (0.91.0)
     execjs (2.8.1)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
@@ -488,7 +488,7 @@ GEM
       excon (~> 0.71)
       formatador (~> 0.2)
       mime-types
-    fog-local (0.7.0)
+    fog-local (0.8.0)
       fog-core (>= 1.27, < 3.0)
     formatador (0.3.0)
     foundation-rails (6.6.2.0)
@@ -510,7 +510,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.13.6)
+    graphql (1.13.8)
     hashdiff (1.0.1)
     hashie (5.0.0)
     highline (2.0.3)
@@ -520,7 +520,7 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
-    i18n (1.8.11)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -676,7 +676,7 @@ GEM
     raabro (1.4.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-attack (6.5.0)
+    rack-attack (6.6.0)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -720,7 +720,7 @@ GEM
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       i18n
-    rb-fsevent (0.11.0)
+    rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rectify (0.13.0)
@@ -730,7 +730,7 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.1)
-    redis (4.5.1)
+    redis (4.6.0)
     regexp_parser (2.1.1)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -947,4 +947,4 @@ RUBY VERSION
    ruby 2.7.5p203
 
 BUNDLED WITH
-   2.2.33
+   2.3.6
