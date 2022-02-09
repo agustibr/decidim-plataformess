@@ -8,7 +8,7 @@ DECIDIM_VERSION = "0.24.3"
 
 gem "decidim", DECIDIM_VERSION
 # gem "decidim-peertube", git: "https://github.com/Platoniq/decidim-plataformess.git", branch: "feature/peertube"
-gem "decidim-decidim_peertube", path: "./decidim-peertube"
+gem "decidim-decidim_peertube", path: "./"
 
 gem "bootsnap", "~> 1.4"
 
